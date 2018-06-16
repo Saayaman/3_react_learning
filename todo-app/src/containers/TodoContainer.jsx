@@ -6,7 +6,6 @@ import TodoPage from '../components/TodoPage.jsx';
 
 class TodoContainer extends Component {
 
-  //ただのセットアップなので、まだ何も起こらない
   render() {
     return (
       <div>
@@ -22,9 +21,6 @@ class TodoContainer extends Component {
 
 function mapStateToProps(state) {
   const { todos } = state;
-
-  console.log("hi", todos);
-
 
   return {
     todos,

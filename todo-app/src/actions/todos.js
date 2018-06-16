@@ -15,8 +15,15 @@ export function addTodo(payload) {
 }
 
 export function clickTodo(payload) {
-  return {
-    type: 'CLICK_TODO',
-    payload: { payload },
+
+  console.log('clicktodo!!', payload);
+
+  return function(dispatch) {
+    dispatch({
+      type: 'CLICK_TODO',
+      payload: {
+        id: payload,
+      },
+    })
   };
 }

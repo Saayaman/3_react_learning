@@ -1,3 +1,4 @@
+import uuid from 'uuid';
 
 const initialState = {
   todos: [],
@@ -37,7 +38,7 @@ export default function todos (state = initialState, action){
     todos: [
       ...state.todos,
       {
-        id: todos.length,
+        id: uuid.v1(),
         text: payload.payload,
         completed: false,
       }
@@ -47,21 +48,23 @@ export default function todos (state = initialState, action){
 
   function clickTodo(state, action) {
     const { payload } = action;
+    const { todos } = state;
 
-    const todoData = payload.todos[payload.id];
-
+    const todoData = todos.find(todo => todo.id === payload.id);
+    const newTodos = todos.filter(todo => todo.id !== payload.id);
+    
     //新しいTodo オブジェクトを作って・・・、
     const newTodo = {
       ...todoData,
       completed: !todoData.completed,
     };
 
-    payload.todos[payload.id] = newTodo
+    newTodos.push(newTodo)
 
     return {
       ...state,
       todos: [
-        payload,
+        ...newTodos,
       ]
     }
 
