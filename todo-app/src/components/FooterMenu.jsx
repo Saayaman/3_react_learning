@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 
 export default class FooterMenu extends Component {
 
+
   state = {
     activeFilter: 'all',
   };
 
   handleFilter = (filter) => {
+
+    const { clickFilter } = this.props;
     this.setState({
       activeFilter: filter,
+    },() => {
+      const { activeFilter } = this.state;
+      clickFilter(activeFilter);
     });
-
-    //todo: ここにアクションを書く
   }
 
   render() {
