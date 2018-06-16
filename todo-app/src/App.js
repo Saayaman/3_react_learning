@@ -5,10 +5,17 @@ import FooterMenu from './components/FooterMenu.jsx';
 import './App.css';
 
 class App extends Component {
+
+
+  addTodo = (todo) =>{
+    console.log("todo!", todo);
+  };
+
+
   render() {
     return (
       <div className="App">
-        <AddTodo />
+        <AddTodo addTodo={this.addTodo}/>
         <TodoList />
         <FooterMenu />
       </div>
