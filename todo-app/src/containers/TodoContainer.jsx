@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getTodos, addTodos } from '../actions/todos.js';
+import { getTodos, addTodo, clickTodo } from '../actions/todos.js';
 import TodoPage from '../components/TodoPage.jsx';
 
 class TodoContainer extends Component {
@@ -10,7 +10,11 @@ class TodoContainer extends Component {
   render() {
     return (
       <div>
-        <TodoPage />
+        <TodoPage
+          todos={this.props.todos.todos}
+          addTodo={this.props.actions.addTodo}
+          clickTodo={this.props.actions.clickTodo}
+        />
       </div>
     )
   }
@@ -19,18 +23,24 @@ class TodoContainer extends Component {
 function mapStateToProps(state) {
   const { todos } = state;
 
+  console.log("hi", todos);
+
+
   return {
-    todos
+    todos,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
+  return {
+    actions: bindActionCreators({
       getTodos: getTodos,
+      addTodo: addTodo,
+      clickTodo: clickTodo,
     },
     dispatch,
-  );
+  )
+  }
 }
 
 export default 
