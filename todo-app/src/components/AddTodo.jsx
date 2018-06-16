@@ -1,11 +1,32 @@
 import React, { Component } from 'react'
 
 export default class AddTodo extends Component {
+
+  state ={
+    inputValue: "",
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.inputValue);
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      inputValue: e.target.value,
+    });
+  }
+
   render() {
     return (
       <div>
-        Add Todo List
-      </div>
+        <form id="form1">
+          <input onChange={this.handleChange} type="text" name="todo" />
+          <button onClick={this.handleSubmit}>
+            Add Todo
+          </button>
+        </form>
+    </div>
     )
   }
 }
