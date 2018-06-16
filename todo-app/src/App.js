@@ -6,17 +6,69 @@ import './App.css';
 
 class App extends Component {
 
+  state = {
+    //このTODO’sが後々Reduxから読み込まれるようになります。
+    todos: [
+      {
+        id: 0,
+        text: "buy a car",
+        completed: false, 
+      }, 
+      {
+        id: 1,
+        text: "write a novel",
+        completed: false, 
+      }, 
+    ],
+  };
 
-  addTodo = (todo) =>{
-    console.log("todo!", todo);
+  todoClick = (id) => {
+    const { todos } = this.state;
+    const todoData = todos[id];
+
+
+    //新しいTodo オブジェクトを作って・・・、
+    const newTodo = {
+      ...todoData,
+      completed: !todoData.completed,
+    };
+
+    todos[id] = newTodo
+
+    this.setState({
+        todos
+    });
+  }
+
+  addTodo = (todoText) => {
+    const { todos } = this.state;
+
+    const newTodo = {
+      id: todos.length,
+      text: todoText,
+      completed: false,
+    }
+
+    const newTodos = [
+      ...todos,
+      newTodo,
+    ];
+
+    this.setState({
+       todos: newTodos,
+    });
+
   };
 
 
   render() {
+
+    const { todos } = this.state;
+
     return (
       <div className="App">
         <AddTodo addTodo={this.addTodo}/>
-        <TodoList />
+        <TodoList todos={todos} clickTodo={this.todoClick} />
         <FooterMenu />
       </div>
     );
