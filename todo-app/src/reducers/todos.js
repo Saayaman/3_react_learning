@@ -21,7 +21,6 @@ export default function todos (state = initialState, action){
 
  function getTodos(state, action){
 
-  const { payload } = action;
    return {
      ...state,
    }
