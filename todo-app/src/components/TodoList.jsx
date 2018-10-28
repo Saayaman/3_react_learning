@@ -9,10 +9,10 @@ export default class TodoList extends Component {
     console.log(todos);
     return (
       <ul>
-        {todos.map((todo, index) =>
+        {todos.map((todo) =>
           <li
-            key={index}
-            onClick={() => clickTodo(index)}
+            key={todo.id}
+            onClick={() => clickTodo(todo.id)}
             style={{
               textDecoration: todo.completed ? 'line-through' : 'none'
             }}
