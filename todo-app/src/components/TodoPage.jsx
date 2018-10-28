@@ -10,45 +10,6 @@ export default class TodoPage extends Component {
     activeFilter: [],
   }
 
-
-  // todoClick = (id) => {
-  //   const { todos } = this.props;
-  //   const todoData = todos[id];
-
-
-  //   //新しいTodo オブジェクトを作って・・・、
-  //   const newTodo = {
-  //     ...todoData,
-  //     completed: !todoData.completed,
-  //   };
-
-  //   todos[id] = newTodo
-
-  //   this.setState({
-  //       todos
-  //   });
-  // }
-
-  // addTodo = (todoText) => {
-  //   const { todos } = this.state;
-
-  //   const newTodo = {
-  //     id: todos.length,
-  //     text: todoText,
-  //     completed: false,
-  //   }
-
-  //   const newTodos = [
-  //     ...todos,
-  //     newTodo,
-  //   ];
-
-  //   this.setState({
-  //      todos: newTodos,
-  //   });
-
-  // };
-
   clickFilter = (filter) => {
     console.log(filter);
 
